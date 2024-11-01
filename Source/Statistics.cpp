@@ -70,8 +70,8 @@ void tablePrint(size_t& max_size, std::vector<std::vector<double>> statistic_tab
 	}
 }
 void statistics() {
+	std::cout << "Enter the given frequency: (Example: 2 5 12 33 67 8 4)\n";
 	std::string input_data = "";
-
 	std::getline(std::cin, input_data);
 
 	std::istringstream r(input_data);
@@ -96,9 +96,11 @@ void statistics() {
 	}
 
 	std::cout << "Relative frequency: " << relative_requency << '\n';
+	std::cout << '\n';
 }
 
 void scatteringCharacteristics() {
+	std::cout << "Enter the given data: (Example: 12 10 15 15)\n";
 	std::string input = "";
 	std::getline(std::cin, input);
 
@@ -127,6 +129,8 @@ void scatteringCharacteristics() {
 		times++;
 	}
 
+	std::cout << '\n';
+
 	avg /= times;
 	std::cout << std::setprecision(3) << "Average: " << avg << '\n';
 
@@ -154,6 +158,7 @@ void scatteringCharacteristics() {
 	double standart_deviattion = dispersion;
 	std::cout << std::setprecision(3) << "Standart Deviattion: " << std::sqrt(standart_deviattion) << '\n';
 	dispersion_arr.clear();
+	std::cout << '\n';
 
 	/*
 
