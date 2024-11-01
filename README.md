@@ -12,7 +12,9 @@ S (Face) : 15
 P (Circumference): 25.067
 
 Side a: 12
+
 Side b: 5
+
 Side c: 8.067
 
 Height: h_c: 3.719
