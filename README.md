@@ -1,8 +1,11 @@
 # SimpyMath
 Is a simple calculator for different math problems.
 Example: Finding values of a triangle with sides a=12, b=5, angle Gama= 30 degrees.
+
 Find: c=?, h_c=?, P(circumference)=?, S(Face)=?
+
 Program will find all needed for you to slove your problem:
+
 S (Face) : 15
 P (Circumference): 25.067
 
