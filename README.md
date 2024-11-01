@@ -8,6 +8,7 @@ Find: c=?, h_c=?, P(circumference)=?, S(Face)=?
 Program will find all needed for you to slove your problem:
 
 S (Face) : 15
+
 P (Circumference): 25.067
 
 Side a: 12
