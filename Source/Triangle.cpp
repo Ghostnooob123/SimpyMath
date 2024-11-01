@@ -9,40 +9,51 @@ Triangle::Triangle(std::vector<double>& _side_arr, std::vector<double>& _h_arr, 
     this->h_arr = _h_arr;
     this->angle_arr = _angle_arr;
 
-    if (this->angle_arr[0] != 0.0 || this->angle_arr[1] != 0.0 || this->angle_arr[2] != 0.0) {
-        this->firstWay();
-    }
-    else
+    if (this->getFace() != 0.0)
     {
-        this->secondWay();
-    }
-
-    if (this->getFace() == 0.0)
-    {
-        double p = (this->side_arr[0] + this->side_arr[1] + this->side_arr[2]) / 2;
-        this->setFace(std::sqrt(p * (p - this->side_arr[0]) * (p - this->side_arr[1]) * (p - this->side_arr[2])));
-    }
-
-    for (size_t i = 0; i < this->h_arr.size(); i++)
-    {
-        this->h_arr[i] = (2 * this->getFace()) / this->side_arr[i];
-    }
-    /*for (size_t i = 0; i < this->h_arr.size(); i++)
-    {
-        if (this->h_arr[i] == 0.0 && this->side_arr[i] != 0.0)
+        for (size_t i = 0; i < this->h_arr.size(); i++)
         {
             this->h_arr[i] = (2 * this->getFace()) / this->side_arr[i];
         }
-    }*/
+
+        this->secondWay();
+    }
+    else
+    {
+        if (this->angle_arr[0] != 0.0 || this->angle_arr[1] != 0.0 || this->angle_arr[2] != 0.0) {
+            this->firstWay();
+        }
+        if (this->h_arr[0] != 0.0 || this->h_arr[1] != 0.0 || this->h_arr[2] != 0.0)
+        {
+            for (size_t i = 0; i < this->h_arr.size(); i++)
+            {
+                if (this->h_arr[i] != 0.0)
+                {
+                    this->setFace(0.5 * this->side_arr[i] * this->h_arr[i]);
+
+                }
+            }
+
+            this->secondWay();
+        }
+        if (this->side_arr[0] != 0.0 && this->side_arr[1] != 0.0 && this->side_arr[2] != 0.0)
+        {
+            double p = (this->side_arr[0] + this->side_arr[1] + this->side_arr[2]) / 2;
+            this->setFace(std::sqrt(p * (p - this->side_arr[0]) * (p - this->side_arr[1]) * (p - this->side_arr[2])));
+        }
+
+        for (size_t i = 0; i < this->h_arr.size(); i++)
+        {
+            this->h_arr[i] = (2 * this->getFace()) / this->side_arr[i];
+        }
+    }
 
     if (this->getTour() == 0.0)
     {
         this->setTour(this->side_arr[0] + this->side_arr[1] + this->side_arr[2]);
     }
-    if (this->getH() == 0.0)
-    {
-        this->setH((2 * this->getTour()) / this->side_arr[0]);
-    }
+
+    this->medians();
 }
 
 void Triangle::firstWay()
@@ -119,6 +130,16 @@ void Triangle::secondWay()
         }
     }
 }
+void Triangle::medians() {
+    double a = this->side_arr[0] * this->side_arr[0];
+    double b = this->side_arr[1] * this->side_arr[1];
+    double c = this->side_arr[2] * this->side_arr[2];
+
+    this->median_arr.resize(3);
+    this->median_arr[0] = 0.5 * std::sqrt(2 * b + 2 * c - a);
+    this->median_arr[1] = 0.5 * std::sqrt(2 * a + 2 * c - b);
+    this->median_arr[2] = 0.5 * std::sqrt(2 * a + 2 * b - c);
+  }
 
 void triangle() {
     std::cout << "Enter the given values: \n";
@@ -164,12 +185,20 @@ void triangle() {
 
     Triangle t = Triangle(side_arr, h_arr, angle_arr, S, P);
 
-    std::cout << "S: " << t.getFace() << '\n';
-    std::cout << "P: " << t.getTour() << '\n';
+    std::cout << "S (Face) : " << t.getFace() << '\n';
+    std::cout << "P (Circumference): " << t.getTour() << '\n';
     std::cout << '\n';
     t.printSides();
     std::cout << '\n';
     t.printHs();
     std::cout << '\n';
-    std::cout << "h: " << t.getH() << '\n';
+    t.printMedians();
+    std::cout << '\n';
 }
+
+
+/*
+
+12 5 8.067 0 0 0 0 0 0 0 0
+
+*/

@@ -18,12 +18,13 @@ int userInput() {
 	while (true) {
 		std::cin >> input;
 
-		if (std::cin.fail() || input < 0 || input > 3) {
+		if (std::cin.fail() || input < 0 || input > 12) {
 			std::cin.clear();
 			std::cin.ignore(10000, '\n');
 			std::cout << "Invalid input. Try again.\n";
 		}
 		else {
+			std::cin.ignore(10000, '\n');
 			break;
 		}
 	}
@@ -32,9 +33,12 @@ int userInput() {
 }
 int main()
 {
-	while (userInput() != 0) {
-		switch (userInput())
-		{
+	int input = 0.0;
+	do {
+		input = userInput();
+		std::cout << '\n';
+
+		switch (input) {
 		case 1:
 			triangle();
 			break;
@@ -45,7 +49,8 @@ int main()
 			scatteringCharacteristics();
 			break;
 		case 0:
+			std::cout << "See you soon again!\n";
 			break;
 		}
-	}
+	} while (input != 0);
 }

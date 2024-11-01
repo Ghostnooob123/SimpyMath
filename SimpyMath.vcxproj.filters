@@ -21,24 +21,24 @@
     <ClCompile Include="SimpyMath.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Triangle.cpp">
+    <ClCompile Include="Source\Shape.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Shape.cpp">
+    <ClCompile Include="Source\Statistics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Statistics.cpp">
+    <ClCompile Include="Source\Triangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Triangle.h">
-      <Filter>Header Files\Shapes</Filter>
+    <ClInclude Include="Source\Shape.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Shape.h">
-      <Filter>Header Files\Shapes</Filter>
+    <ClInclude Include="Source\Statistics.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Statistics.h">
+    <ClInclude Include="Source\Triangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
