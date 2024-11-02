@@ -3,15 +3,20 @@
 #include <sstream>
 
 #include "Triangle.h"
+#include "Rectangle.h"
+#include "Square.h"
+
 #include "Statistics.h"
 
 int userInput() {
 	std::cout << "Available Shapes:\n";
 	std::cout << "1: Triangle\n";
+	std::cout << "2: Rectangle\n";
+	std::cout << "3: Square\n\n";
 
 	std::cout << "Statistics: \n";
-	std::cout << "2: Grouping data into tables with frequency \n";
-	std::cout << "3: Scattering characteristic\n";
+	std::cout << "4: Grouping data into tables with frequency \n";
+	std::cout << "5: Scattering characteristic\n";
 	std::cout << "0: Exit\n";
 
 	int input = 0;
@@ -33,7 +38,7 @@ int userInput() {
 }
 int main()
 {
-	int input = 0.0;
+	int input = 0;
 	do {
 		input = userInput();
 		std::cout << '\n';
@@ -43,9 +48,15 @@ int main()
 			triangle();
 			break;
 		case 2:
-			statistics();
+			rectangle();
 			break;
 		case 3:
+			square();
+			break;
+		case 4:
+			statistics();
+			break;
+		case 5:
 			scatteringCharacteristics();
 			break;
 		case 0:

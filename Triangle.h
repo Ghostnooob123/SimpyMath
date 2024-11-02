@@ -2,10 +2,6 @@
 #define TRIANGLE_H
 
 #include "Shape.h"
-#include <vector>
-#include <iostream>
-#include <cmath>
-#include <iomanip>
 
 #define _USE_MATH_DEFINES
 #include <math.h>
@@ -35,6 +31,8 @@ private:
     std::vector<double> h_arr;
     std::vector<double> angle_arr;
     std::vector<double> median_arr;
+
+    bool validation() override;
 
     void firstWay();
     void secondWay();
