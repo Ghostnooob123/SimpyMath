@@ -70,7 +70,7 @@ void tablePrint(size_t& max_size, std::vector<std::vector<double>> statistic_tab
 	}
 }
 void statistics() {
-	std::cout << "Enter the given frequency: (Example: 2 5 12 33 67 8 4)\n";
+	std::cout << "Enter the given frequency: (Example frequency: 2 5 12 33 67 8 4)\n";
 	std::string input_data = "";
 	std::getline(std::cin, input_data);
 
@@ -100,7 +100,7 @@ void statistics() {
 }
 
 void scatteringCharacteristics() {
-	std::cout << "Enter the given data: (Example: 12 10 15 15)\n";
+	std::cout << "Enter the given data: (Example data: 12 10 15 15)\n";
 	std::string input = "";
 	std::getline(std::cin, input);
 

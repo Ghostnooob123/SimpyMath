@@ -8,9 +8,9 @@
 
 const uint8_t MAX_COLS = 4;
 
-uint64_t getMaxFrequency(size_t& max_size, std::istringstream& r, std::vector<std::vector<float>>& statistic_table);
-void fulfillTheTable(size_t& max_size, uint64_t& max_frquency, std::vector<std::vector<float>>& statistic_table);
-void tablePrint(size_t& max_size, std::vector<std::vector<float>> statistic_table);
+double getMaxFrequency(size_t& max_size, std::istringstream& r, std::vector<std::vector<double>>& statistic_table);
+void fulfillTheTable(size_t& max_size, double& max_frquency, std::vector<std::vector<double>>& statistic_table);
+void tablePrint(size_t& max_size, std::vector<std::vector<double>> statistic_table);
 void statistics();
 
 void scatteringCharacteristics();

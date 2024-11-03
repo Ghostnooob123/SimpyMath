@@ -9,6 +9,11 @@ Triangle::Triangle(std::vector<double>& _side_arr, std::vector<double>& _h_arr, 
     this->h_arr = _h_arr;
     this->angle_arr = _angle_arr;
 
+    if (!this->validation())
+    {
+        return;
+    }
+
     size_t index = 0;
     double sum = 0.0;
 
@@ -74,6 +79,65 @@ Triangle::Triangle(std::vector<double>& _side_arr, std::vector<double>& _h_arr, 
     }
 
     this->medians();
+
+    this->shapeCreationStatus(true);
+}
+
+void Triangle::printInfo()
+{
+    if (this->getPrecision() == 0)
+    {
+        std::cout << "S (Face) : " << this->getFace() << '\n';
+        std::cout << "P (Circumference): " << this->getTour() << '\n';
+        std::cout << '\n';
+        std::cout << "Side a: " << this->side_arr[0] << '\n'
+            << "Side b: " << this->side_arr[1] << '\n' << "Side c: " << this->side_arr[2] << '\n';
+        std::cout << '\n';
+        std::cout << "Heigh h_a: " << this->h_arr[0] << '\n'
+            << "Height h_b: " << this->h_arr[1] << '\n' << "Height h_c: " << this->h_arr[2] << '\n';
+        std::cout << '\n';
+        std::cout << "Median m_a: " << this->median_arr[0] << '\n'
+            << "Median m_b : " << this->median_arr[1] << '\n' << "Median m_c: " << this->median_arr[2] << '\n';
+        std::cout << '\n';
+
+        return;
+    }
+    std::cout << std::setprecision(this->getPrecision()) << "S (Face) : " << this->getFace() << '\n';
+    std::cout << "P (Circumference): " << this->getTour() << '\n';
+    std::cout << '\n';
+    std::cout << "Side a: " << this->side_arr[0] << '\n'
+        << "Side b: " << this->side_arr[1] << '\n' << "Side c: " << this->side_arr[2] << '\n';
+    std::cout << '\n';
+    std::cout << "Heigh h_a: " << this->h_arr[0] << '\n'
+        << "Height h_b: " << this->h_arr[1] << '\n' << "Height h_c: " << this->h_arr[2] << '\n';
+    std::cout << '\n';
+    std::cout << "Median m_a: " << this->median_arr[0] << '\n'
+        << "Median m_b : " << this->median_arr[1] << '\n' << "Median m_c: " << this->median_arr[2] << '\n';
+
+    std::cout.unsetf(std::ios::fixed);
+    std::cout.precision(6);
+}
+
+bool Triangle::validation()
+{
+    size_t times = 0;
+    for (size_t i = 0; i < this->side_arr.size(); i++)
+    {
+        if (this->side_arr[i] == 0.0)
+        {
+            times++;
+        }
+    }
+    if (times >= 2)
+    {
+        std::cout << '\n';
+        std::cout << "Invalid parameters\n";
+        this->shapeCreationStatus(false);
+        std::cout << '\n';
+        return false;
+    }
+
+    return true;
 }
 
 void Triangle::firstWay()
@@ -163,37 +227,38 @@ void Triangle::medians() {
 
 void triangle() {
     std::cout << "Enter the given values: \n";
+    std::cout << "Example: \n12 5 0 \n0 0 0 \n0 0 30 \n0 \n0\n";
     double a = 0.0;
     double b = 0.0;
     double c = 0.0;
 
-    std::cout << "Enter if you have a given side: a, b and c or left it 0 \n";
+    std::cout << "Enter if you have a given side: 'a', 'b' and 'c' or left it 0 \n";
     std::cin >> a >> b >> c;
 
     double h_a = 0.0;
     double h_b = 0.0;
     double h_c = 0.0;
 
-    std::cout << "Enter if you have a given h: h_a, h_b and h_c or left it 0 \n";
+    std::cout << "Enter if you have a given h: 'h_a', 'h_b' and 'h_c' or left it 0 \n";
     std::cin >> h_a >> h_b >> h_c;
 
     double angle_a = 0.0;
     double angle_b = 0.0;
     double angle_c = 0.0;
 
-    std::cout << "Enter if you have a given angle: Alpha, Beta and Gamma or left it 0 \n";
+    std::cout << "Enter if you have a given angle: 'Alpha', 'Beta' and 'Gamma' or left it 0 \n";
     std::cin >> angle_a >> angle_b >> angle_c;
 
     std::vector<double> side_arr{ a, b, c };
     std::vector<double> h_arr{ h_a, h_b, h_c };
     std::vector<double> angle_arr{ angle_a, angle_b, angle_c };
 
-    double S = 0;
+    double S = 0.0;
     double P = 0.0;
 
-    std::cout << "Enter if you have a given face of a triangle or left it 0 \n";
+    std::cout << "Enter if you have a given 'S' (Face) of a triangle or left it 0 \n";
     std::cin >> S;
-    std::cout << "Enter if you have a given circumference of a triangle or left it 0 \n";
+    std::cout << "Enter if you have a given 'P' (Circumference) of a triangle or left it 0 \n";
     std::cin >> P;
 
     if (std::cin.fail())
@@ -201,24 +266,25 @@ void triangle() {
         return;
     }
 
-    std::cout << '\n';
-
     Triangle t = Triangle(side_arr, h_arr, angle_arr, S, P);
 
-    std::cout << "S (Face) : " << t.getFace() << '\n';
-    std::cout << "P (Circumference): " << t.getTour() << '\n';
-    std::cout << '\n';
-    t.printSides();
-    std::cout << '\n';
-    t.printHs();
-    std::cout << '\n';
-    t.printMedians();
-    std::cout << '\n';
+    int precision = 0;
+    std::cout << "Decimal precision preference or left it 0\n";
+    std::cin >> precision;
+
+    if (t.isShapeDone())
+    {
+        t.setPrecision(precision);
+
+        std::cout << '\n';
+        t.printInfo();
+        std::cout << '\n';
+    }
 }
 
 
 /*
 
-12 5 0 0 0 0 0 0 0 0 0
+12 5 0 0 0 0 0 0 30 0 0
 
 */
