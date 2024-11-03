@@ -8,12 +8,7 @@ class Square : public Shape
 public:
 	Square(double& _S, double& _P, double& _side_a, double& _diagonal);
 
-	void printSide() {
-		std::cout << "Side a: " << this->side_a << '\n';
-	}
-	void printDiagonal() {
-		std::cout << std::setprecision(4) << "d (Diagonal): " << this->diagonal << '\n';
-	}
+	void printInfo();
 private:
 	double side_a;
 	double diagonal;

@@ -31,9 +31,42 @@ Square::Square(double& _S, double& _P, double& _side_a, double& _diagonal)
 
 	this->setTour(4 * this->side_a);
 	this->setFace(this->side_a * this->side_a);
+	this->setR(this->side_a / std::sqrt(2));
+	this->setr(this->side_a / 2);
+
 	this->diagonal = this->side_a * std::sqrt(2);
 
 	this->shapeCreationStatus(true);
+}
+
+void Square::printInfo()
+{
+	if (this->getPrecision() == 0)
+	{
+		std::cout << "S (Face) : " << this->getFace() << '\n';
+		std::cout << "P (Circumference): " << this->getTour() << '\n';
+		std::cout << '\n';
+		std::cout << "Side a: " << this->side_a << '\n';
+		std::cout << '\n';
+		std::cout << "d (Diagonal): " << this->diagonal << '\n';
+		std::cout << '\n';
+		std::cout << "R: " << this->getR() << '\n';
+		std::cout << "r: " << this->getr() << '\n';
+
+		return;
+	}
+	std::cout << std::setprecision(this->getPrecision()) << "S (Face) : " << this->getFace() << '\n';
+	std::cout << "P (Circumference): " << this->getTour() << '\n';
+	std::cout << '\n';
+	std::cout << "Side a: " << this->side_a << '\n';
+	std::cout << '\n';
+	std::cout << "d (Diagonal): " << this->diagonal << '\n';
+	std::cout << '\n';
+	std::cout  << "R: " << this->getR() << '\n';
+	std::cout << "r: " << this->getr() << '\n';
+
+	std::cout.unsetf(std::ios::fixed);
+	std::cout.precision(6);
 }
 
 bool Square::validation() 
@@ -55,7 +88,7 @@ void square()
 	std::cout << "Enter if you have a given side: 'a' or left it 0 \n";
 	std::cin >> side_a;
 
-	double S = 0;
+	double S = 0.0;
 	double P = 0.0;
 
 	std::cout << "Enter if you have a given 'S' (Face) of a square or left it 0 \n";
@@ -67,17 +100,23 @@ void square()
 	std::cout << "Enter if you have a given 'd' (Diagonal) of a square or left it 0 \n";
 	std::cin >> d;
 
+	if (std::cin.fail())
+	{
+		return;
+	}
+
 	Square s = Square(S, P, side_a, d);
+
+	int precision = 0;
+	std::cout << "Decimal precision preference or left it 0\n";
+	std::cin >> precision;
 
 	if (s.isShapeDone())
 	{
+		s.setPrecision(precision);
+
 		std::cout << '\n';
-		s.printSide();
-		std::cout << '\n';
-		std::cout << "S (Face):" << s.getFace() << '\n';
-		std::cout << "P (Circumference): " << s.getTour() << '\n';
-		std::cout << '\n';
-		s.printDiagonal();
+		s.printInfo();
 		std::cout << '\n';
 	}
 }

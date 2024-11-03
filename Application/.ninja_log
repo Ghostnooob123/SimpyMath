@@ -1,13 +1,15 @@
 # ninja log v5
 22	615	7522490042789821	CMakeFiles/SimpyMath.dir/Shape.cpp.obj	2f7c87581a2993ec
-9	778	7522545126733386	CMakeFiles/SimpyMath.dir/SimpyMath.cpp.obj	7010b0cf93208b32
-13	660	7522552844556254	CMakeFiles/SimpyMath.dir/Rectangle.cpp.obj	782881f31b96e7c0
-2	704	7522552844996255	CMakeFiles/SimpyMath.dir/Triangle.cpp.obj	58f31b6eeeeb8a3d
-704	835	7522552846191241	SimpyMath.exe	493263bf479dda5a
-31	922	7522545128178378	CMakeFiles/SimpyMath.dir/Statistics.cpp.obj	ae615ee2ee85f803
-51	734	7522624239497693	CMakeFiles/SimpyMath.dir/Square.cpp.obj	77ef02b2b3218fe8
 8	777	7522624240012690	CMakeFiles/SimpyMath.dir/SimpyMath.cpp.obj	7010b0cf93208b32
 42	791	7522624240142697	CMakeFiles/SimpyMath.dir/Rectangle.cpp.obj	782881f31b96e7c0
 20	847	7522624240712679	CMakeFiles/SimpyMath.dir/Triangle.cpp.obj	58f31b6eeeeb8a3d
-32	908	7522624241327675	CMakeFiles/SimpyMath.dir/Statistics.cpp.obj	ae615ee2ee85f803
 908	1046	7522624242485689	SimpyMath.exe	52ed19a3773ef7dd
+32	908	7522624241327675	CMakeFiles/SimpyMath.dir/Statistics.cpp.obj	ae615ee2ee85f803
+51	734	7522624239497693	CMakeFiles/SimpyMath.dir/Square.cpp.obj	77ef02b2b3218fe8
+50	875	7523506328266125	CMakeFiles/SimpyMath.dir/Circle.cpp.obj	701f27e3778303dc
+41	902	7523506328701122	CMakeFiles/SimpyMath.dir/Square.cpp.obj	77ef02b2b3218fe8
+2	908	7523506328766100	CMakeFiles/SimpyMath.dir/SimpyMath.cpp.obj	7010b0cf93208b32
+32	951	7523506329171122	CMakeFiles/SimpyMath.dir/Rectangle.cpp.obj	782881f31b96e7c0
+13	982	7523506329486106	CMakeFiles/SimpyMath.dir/Triangle.cpp.obj	58f31b6eeeeb8a3d
+23	1069	7523506330371138	CMakeFiles/SimpyMath.dir/Statistics.cpp.obj	ae615ee2ee85f803
+1069	1205	7523506331631139	SimpyMath.exe	12769be3a9085a89

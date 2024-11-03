@@ -5,6 +5,7 @@
 #include "Triangle.h"
 #include "Rectangle.h"
 #include "Square.h"
+#include "Circle.h"
 
 #include "Statistics.h"
 
@@ -12,11 +13,12 @@ int userInput() {
 	std::cout << "Available Shapes:\n";
 	std::cout << "1: Triangle\n";
 	std::cout << "2: Rectangle\n";
-	std::cout << "3: Square\n\n";
+	std::cout << "3: Square\n";
+	std::cout << "4: Circle\n\n";
 
 	std::cout << "Statistics: \n";
-	std::cout << "4: Grouping data into tables with frequency \n";
-	std::cout << "5: Scattering characteristic\n";
+	std::cout << "5: Grouping data into tables with frequency \n";
+	std::cout << "6: Scattering characteristic\n";
 	std::cout << "0: Exit\n";
 
 	int input = 0;
@@ -54,9 +56,12 @@ int main()
 			square();
 			break;
 		case 4:
-			statistics();
+			circle();
 			break;
 		case 5:
+			statistics();
+			break;
+		case 6:
 			scatteringCharacteristics();
 			break;
 		case 0:

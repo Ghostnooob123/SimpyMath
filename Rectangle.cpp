@@ -20,12 +20,46 @@ Rectangle::Rectangle(double& _S, double& _P, std::vector<double>& _side_arr, dou
 
 	this->setTour(2 * (a + b));
 	this->setFace(a * b);
+
 	this->diagonal = std::sqrt((a * a) + (b * b));
+
+	this->setR(this->diagonal * 2);
 
 	this->side_arr[0] = a;
 	this->side_arr[1] = b;
 
 	this->shapeCreationStatus(true);
+}
+
+void Rectangle::printInfo()
+{
+	if (this->getPrecision() == 0)
+	{
+		std::cout << "S (Face) : " << this->getFace() << '\n';
+		std::cout << "P (Circumference): " << this->getTour() << '\n';
+		std::cout << '\n';
+
+		std::cout << "Side a: " << this->side_arr[0] << '\n'
+			<< "Side b: " << this->side_arr[1] << '\n';
+		std::cout << '\n';
+		std::cout << "d (Diagonal): " << this->diagonal << '\n';
+		std::cout << '\n';
+		std::cout << "R: " << this->getR() << '\n';
+
+		return;
+	}
+	std::cout << std::setprecision(this->getPrecision()) << "S (Face) : " << this->getFace() << '\n';
+	std::cout << "P (Circumference): " << this->getTour() << '\n';
+	std::cout << '\n';
+	std::cout << "Side a: " << this->side_arr[0] << '\n'
+		<< "Side b: " << this->side_arr[1] << '\n';
+	std::cout << '\n';
+	std::cout << "d (Diagonal): " << this->diagonal << '\n';
+	std::cout << '\n';
+	std::cout << "R: " << this->getR() << '\n';
+
+	std::cout.unsetf(std::ios::fixed);
+	std::cout.precision(6);
 }
 
 bool Rectangle::validation() {
@@ -103,17 +137,23 @@ void rectangle() {
 	std::cout << "Enter if you have a given 'd' (Diagonal) of a rectangle or left it 0 \n";
 	std::cin >> d;
 
+	if (std::cin.fail())
+	{
+		return;
+	}
+
 	Rectangle r = Rectangle(S, P, v, d);
+
+	int precision = 0;
+	std::cout << "Decimal precision preference or left it 0\n";
+	std::cin >> precision;
 
 	if (r.isShapeDone())
 	{
+		r.setPrecision(precision);
+
 		std::cout << '\n';
-		r.printSides();
-		std::cout << '\n';
-		std::cout << "S (Face):" << r.getFace() << '\n';
-		std::cout << "P (Circumference): " << r.getTour() << '\n';
-		std::cout << '\n';
-		r.printDiagonal();
+		r.printInfo();
 		std::cout << '\n';
 	}
 }

@@ -8,13 +8,7 @@ class Rectangle	: public Shape
 public:
 	Rectangle(double& _S, double& _P, std::vector<double>& _side_arr, double& _diagonal);
 
-	void printDiagonal() {
-		std::cout << std::setprecision(4) << "d (Diagonal): " << this->diagonal << '\n';
-	}
-	void printSides() {
-		std::cout << std::setprecision(4) << "Side a: " << this->side_arr[0] << '\n';
-		std::cout << std::setprecision(4) << "Side b: " << this->side_arr[1] << '\n';
-	}
+	void printInfo();
 private:
 	std::vector<double> side_arr;
 	double diagonal;
