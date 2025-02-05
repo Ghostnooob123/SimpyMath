@@ -11,8 +11,11 @@ endif()
 
 project ("SimpyMath")
 
+file(GLOB SOURCES src/*.cpp)
+
 # Add source to this project's executable.
-add_executable (SimpyMath "SimpyMath.cpp" "SimpyMath.h"  "Shape.h" "Triangle.cpp" "Triangle.h" "Statistics.cpp" "Statistics.h" "Rectangle.cpp" "Rectangle.h" "Square.cpp" "Square.h" "Circle.cpp" "Circle.h")
+#add_executable (SimpyMath "SimpyMath.cpp" "SimpyMath.h"  "Shape.h" "Triangle.cpp" "Triangle.h" "Statistics.cpp" "Statistics.h" "Rectangle.cpp" "Rectangle.h" "Square.cpp" "Square.h" "Circle.cpp" "Circle.h")
+add_executable(SimpyMath ${SOURCES})
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET SimpyMath PROPERTY CXX_STANDARD 20)
